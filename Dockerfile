@@ -1,8 +1,9 @@
 FROM gcc:9
 # this image ships with: GLIBC 2.28, GLIBCXX_3.4.28
 
-ARG FAUST_VERSION="2.54.9"
-ARG HISE_VERSION="3.0.3"
+ARG FAUST_VERSION="2.50.6"
+ARG HISE_VERSION="develop"
+#ARG HISE_VERSION="3.0.3"
 ARG IPP_VERSION="2021.7.0"
 
 LABEL com.github.spezifisch.hise-builder.version.faust=$FAUST_VERSION
@@ -61,7 +62,8 @@ RUN echo /opt/intel/oneapi/ipp/latest/lib/intel64 > /etc/ld.so.conf.d/ipp.conf \
 
 # put ipp where HISE hardcodedly expects it
 RUN mkdir -p /opt/intel/ipp \
-    && ln -s /opt/intel/oneapi/ipp/latest/include /opt/intel/ipp/include
+    && ln -s /opt/intel/oneapi/ipp/latest/include /opt/intel/ipp/include \
+    && ln -s /opt/intel/oneapi/ipp/latest/lib /opt/intel/ipp/lib
 
 # build HISE
 # see: https://github.com/christophhart/HISE#linux
