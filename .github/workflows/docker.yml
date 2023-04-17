@@ -36,12 +36,9 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           # append hise version to tag
           flavor: |
-            latest=false
+            latest=auto
             prefix=
             suffix=-hise-${{ matrix.hise_version }}
-          # set latest tag for main branch of this repo and hise=develop
-          tags: |
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' && matrix.hise_version == 'develop' }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
