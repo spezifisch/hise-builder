@@ -2,8 +2,7 @@ FROM gcc:9
 # this image ships with: GLIBC 2.28, GLIBCXX_3.4.28
 
 ARG FAUST_VERSION="2.54.9"
-ARG HISE_VERSION="develop"
-#ARG HISE_VERSION="3.0.3"
+ARG HISE_VERSION="3.0.3"
 ARG IPP_VERSION="2021.7.0"
 
 LABEL com.github.spezifisch.hise-builder.version.faust=$FAUST_VERSION
