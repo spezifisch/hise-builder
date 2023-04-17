@@ -39,8 +39,8 @@ jobs:
             latest=false
             prefix=
             suffix=-hise-${{ matrix.hise_version }}
+          # set latest tag for main branch of this repo and hise=develop
           tags: |
-            # set latest tag for main branch of this repo and hise=develop
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' && matrix.hise_version == 'develop' }}
 
       - name: Build and push Docker image
