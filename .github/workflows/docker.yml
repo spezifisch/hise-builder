@@ -18,12 +18,14 @@ jobs:
     strategy:
       matrix:
         # compile flavors of HISE upstream repo
-        hise_repository: [""]
+        hise_repository: ["https://github.com/christophhart/HISE"]
         hise_version: ["develop", "3.0.3"]
         # also build my experimental flavors
         include:
           - hise_repository: "https://github.com/spezifisch/HISE"
-            hise_version: ["develop-ci-dsp", "3.0.3-ci-dsp"]
+            hise_version: "develop-ci-dsp"
+          - hise_repository: "https://github.com/spezifisch/HISE"
+            hise_version: "3.0.3-ci-dsp"
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
