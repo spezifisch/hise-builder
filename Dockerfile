@@ -41,8 +41,8 @@ RUN apt-get update && apt-get -y install \
     mesa-common-dev \
 # IPP support for HISE
     intel-oneapi-ipp-devel-$IPP_VERSION \
-# dummy xorg for HISE
-    xserver-xorg-video-dummy \
+# fake X server for HISE
+    xvfb \
 # faust deps
     cmake \
     && rm -rf /var/lib/apt/lists/*
@@ -54,9 +54,6 @@ RUN echo "Libraries:" \
 
 # this is needed so llvm-config can be found
 ENV PATH="/usr/lib/llvm-11/bin:$PATH"
-
-# add dummy X server so HISE doesn't crash (start it manually if you need it)
-COPY dummy /root/dummy
 
 # build faust
 # see: https://github.com/grame-cncm/faust/wiki/BuildingSimple
