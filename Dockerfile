@@ -69,7 +69,8 @@ RUN echo /opt/intel/oneapi/ipp/latest/lib/intel64 > /etc/ld.so.conf.d/ipp.conf \
 # put ipp where HISE hardcodedly expects it
 RUN mkdir -p /opt/intel/ipp \
     && ln -s /opt/intel/oneapi/ipp/latest/include /opt/intel/ipp/include \
-    && ln -s /opt/intel/oneapi/ipp/latest/lib/intel64 /opt/intel/ipp/lib
+    && ln -s /opt/intel/oneapi/ipp/latest/lib/intel64 /opt/intel/ipp/lib \
+    && ln -s .. /opt/intel/ipp/lib/intel64
 
 # build HISE
 # see: https://github.com/christophhart/HISE#linux
