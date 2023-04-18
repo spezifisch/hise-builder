@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         # compile flavors of HISE upstream repo
-        hise_repository: []
+        hise_repository: [""]
         hise_version: ["develop", "3.0.3"]
         # also build my experimental flavors
         include:
