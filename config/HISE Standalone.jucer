@@ -254,15 +254,14 @@
     <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraDefs="USE_IPP=1&#10;HI_ENABLE_EXPANSION_EDITING=1&#10;HISE_ENABLE_EXPANSIONS=1&#10;HISE_SCRIPT_SERVER_TIMEOUT=20000&#10;"
                 smallIcon="bfBEgJ" bigIcon="bfBEgJ" linuxExtraPkgConfig="x11 xinerama xext"
                 extraLinkerFlags="-no-pie&#10;" extraCompilerFlags="-fpermissive"
-                externalLibraries="faust&#10;faustmachine&#10;ippcore&#10;ippi&#10;ipps&#10;ippvm&#10;">
+                externalLibraries="faust&#10;ippcore&#10;ippi&#10;ipps&#10;ippvm">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="HISE Standalone"
-                       headerPath="/opt/intel/oneapi/ipp/latest/include"
-                       libraryPath="/opt/intel/oneapi/ipp/latest/lib/intel64&#10;/usr/local/lib&#10;"/>
+                       linkTimeOptimisation="1" headerPath="/opt/intel/ipp/include&#10;../../../../../faust-install/include"
+                       libraryPath="/opt/intel/ipp/lib&#10;../../../../../faust-install/lib&#10;/usr/local/lib"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="HISE Standalone"
-                       linkTimeOptimisation="1"
-                       headerPath="/opt/intel/oneapi/ipp/latest/include"
-                       libraryPath="/opt/intel/oneapi/ipp/latest/lib/intel64&#10;/usr/local/lib&#10;"/>
+                       linkTimeOptimisation="1" headerPath="/opt/intel/ipp/include&#10;../../../../../faust-install/include"
+                       libraryPath="/opt/intel/ipp/lib&#10;../../../../../faust-install/lib&#10;/usr/local/lib"/>
         <CONFIGURATION name="TravisCI" isDebug="1" optimisation="1" targetName="HISE Standalone"
                        defines="TRAVIS_CI=1"/>
       </CONFIGURATIONS>

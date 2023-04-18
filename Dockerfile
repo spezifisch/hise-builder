@@ -5,9 +5,13 @@ ARG FAUST_VERSION="2.54.9"
 ARG HISE_VERSION="3.0.3"
 ARG IPP_VERSION="2021.7.0"
 
+ARG HISE_REPOSITORY="https://github.com/christophhart/HISE"
+
 LABEL com.github.spezifisch.hise-builder.version.faust=$FAUST_VERSION
 LABEL com.github.spezifisch.hise-builder.version.hise=$HISE_VERSION
 LABEL com.github.spezifisch.hise-builder.version.ipp=$IPP_VERSION
+
+RUN if [ -z "$HISE_REPOSITORY" ]; then exit 1; fi
 
 # intel IPP sources
 # see: https://www.intel.com/content/www/us/en/docs/oneapi/installation-guide-linux/2023-0/apt.html
@@ -62,12 +66,12 @@ RUN echo /opt/intel/oneapi/ipp/latest/lib/intel64 > /etc/ld.so.conf.d/ipp.conf \
 # put ipp where HISE hardcodedly expects it
 RUN mkdir -p /opt/intel/ipp \
     && ln -s /opt/intel/oneapi/ipp/latest/include /opt/intel/ipp/include \
-    && ln -s /opt/intel/oneapi/ipp/latest/lib /opt/intel/ipp/lib
+    && ln -s /opt/intel/oneapi/ipp/latest/lib/intel64 /opt/intel/ipp/lib
 
 # build HISE
 # see: https://github.com/christophhart/HISE#linux
 WORKDIR /root
-RUN git clone https://github.com/christophhart/HISE -b "$HISE_VERSION" --depth 1
+RUN git clone "$HISE_REPOSITORY" -b "$HISE_VERSION" --depth 1
 RUN unzip HISE/tools/SDK/sdk.zip -d HISE/tools/SDK/
 
 ARG juceproject="config/HISE Standalone.jucer"
