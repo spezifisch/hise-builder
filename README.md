@@ -16,10 +16,10 @@ See my [Reach fork](https://github.com/spezifisch/Reach) for an example use of t
 
 * Its Dockerfile is a good starting point. It inherits this container (hise-builder) and compiles the Linux VST3 version of that plugin.
 * Build is triggered by [a GitHub Action](https://github.com/spezifisch/Reach/blob/main/.github/workflows/build.yml) on main/develop branch and tag pushes.
-* Branch pushes are uploaded as artifacts which are downloadable in the GitHub's Actions tab as eg. `Reach-nightly-20230418-17b1d68-Linux-VST3.tar.gz`
+* Branch pushes are uploaded as artifacts which are downloadable in your repository's GitHub's Actions tab as eg. `Reach-nightly-20230418-17b1d68-Linux-VST3.tar.gz`
 * Tags matching `v*` are uploaded as releases as eg. `Reach-v1.5.0-Linux-VST3.tar.gz` for tag `v1.5.0`
 
-You can also use it independent from GitHub and get the resulting tar ball using (inside Reach repository):
+You can also use it independently from GitHub Actions and get the resulting tar ball using (inside Reach repository):
 
 ```console
 $ docker build . -t reach-builder
