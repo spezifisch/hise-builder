@@ -18,6 +18,7 @@ RUN if [ -z "$HISE_REPOSITORY" ]; then exit 1; fi
 RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | gpg --dearmor > /usr/share/keyrings/oneapi-archive-keyring.gpg \
     && echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" > /etc/apt/sources.list.d/oneAPI.list
 
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install \
 # HISE deps
     build-essential \
