@@ -24,6 +24,9 @@ jobs:
         include:
           - hise_repository: "https://github.com/spezifisch/HISE"
             hise_version: "3.0.3-ci-dsp"
+        include:
+          - hise_repository: "https://github.com/spezifisch/HISE"
+            hise_version: "develop-ci-dsp"
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
